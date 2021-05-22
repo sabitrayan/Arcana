@@ -3,8 +3,8 @@ import FirebaseDatabase
 class MenuViewController: UIViewController {
     let ref = Database.database().reference().child("arcana").child("burger")
     var products = [Product]()
-    var catalogProducts = Products.hamburgersList
-    
+    //var catalogProducts = Products.hamburgersList
+
     private let tableView: UITableView = {
         let tabelView = UITableView()
         tabelView.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.menuCellID)
@@ -15,14 +15,12 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         retrieveProducts()
-        func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-                return 1
-            }
+        view.addSubview(tableView)
+    }
 
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                    return self.products.count
 
-            }
+
+
 //        func tableView(tableView: UITableView,cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "CellProduct",for: indexPath as IndexPath) as! Product
 //
@@ -40,7 +38,7 @@ class MenuViewController: UIViewController {
 //            return cell
 //            }
 
-    }
+
    // func retrieveProducts(){
 //        ref.queryOrdered(byChild: "book_price").observe(.childAdded, with: {
 //            (snapshot) in
@@ -73,26 +71,29 @@ class MenuViewController: UIViewController {
 //            }
 //        }
        self.ref.observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
-            var _products = Array<Product>()
-//            for _ in 1...100{
-//                print("hfeawjiorbehuwjrfhi")
-//                print(snapshot)
-//            }
+            //var _products = Array<Product>()
 
-            for item in snapshot.children {
-                let product = Product(snapshot: item as! DataSnapshot)
-                _products.append(product)
+
+            for _ in snapshot.children {
+                //let product = Product(snapshot: item as! DataSnapshot)
+                let value = snapshot.value as? NSDictionary
+                let name = value?["name"] as? String ?? ""
+                let price = value?["price"] as? Int ?? 0
+                let product = Product(name: name, price: price)
+
+                self?.products.append(product)
             }
 
-            self?.products = _products
-
+            //self?.products = _products
             self?.tableView.reloadData()
         })
-
+        for _ in 1...100{
+            print("hfeawjiorbehuwjrfhi")
+            print(products)
+        }
     }
 
     private func setupTableView() {
-        view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.dataSource = self
         tableView.delegate = self
@@ -131,18 +132,32 @@ class MenuViewController: UIViewController {
 
            //self?.MenuViewController.reloadData()
         })
-        print(products)
+//        for _ in 1...100{
+//        print(products)
+//        }
     }
 }
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return catalogProducts.count
+        return products.count
     }
-    
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.menuCellID, for: indexPath) as! MenuTableViewCell
-        cell.product = catalogProducts[indexPath.row]
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.menuCellID, for: indexPath) as! MenuTableViewCell
+//
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCellID",
+                                                 for: indexPath) as! MenuTableViewCell
+
+        var product = Product(name: "", price: 0)
+
+        product = products[indexPath.row]
+
+        cell.productName.text = product.name
+
+
         return cell
     }
 }

@@ -6,14 +6,14 @@ class MenuTableViewCell: UITableViewCell {
     private let bgView = UIView()
 
 
-    private let icon: UIImageView = {
+    var icon: UIImageView = {
         let icon = UIImageView()
         icon.contentMode = .scaleToFill
         icon.translatesAutoresizingMaskIntoConstraints = false
         return icon
     }()
     
-    private let labelsStackView: UIStackView = {
+    var labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
@@ -22,7 +22,7 @@ class MenuTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private let productName: UILabel = {
+    var productName: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 13)
         label.lineBreakMode = .byWordWrapping
@@ -31,7 +31,7 @@ class MenuTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let priceLabel: UILabel = {
+    var priceLabel: UILabel = {
         let priceLabel = UILabel()
         priceLabel.font = .boldSystemFont(ofSize: 50)
         priceLabel.numberOfLines = 0
@@ -41,7 +41,7 @@ class MenuTableViewCell: UITableViewCell {
         return priceLabel
     }()
     
-    private let descriptionLabel: UILabel = {
+    var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 10)
         label.numberOfLines = 0

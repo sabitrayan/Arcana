@@ -3,10 +3,10 @@ import Firebase
 import FirebaseDatabase
 
 struct Product {
-    let name: String?
+    var name: String?
     //let icon: String?
     //let description: String?
-    let price: Int?
+    var price: Int?
     let ref: DatabaseReference?
 
     var completed: Bool = false
@@ -20,12 +20,12 @@ struct Product {
     }
     
     init(snapshot: DataSnapshot) {
-        
-        let snapshotValue = snapshot.value as! [String: AnyObject]
-        name = snapshotValue["name"] as? String
+
+        let snapshotValue = snapshot.value as? [String: AnyObject]
+        name = snapshotValue?["name"] as? String
         //icon = snapshotValue["icon"] as? String
         //description = (snapshotValue["description"] as! String)
-        price = snapshotValue["price"] as? Int
+        price = snapshotValue?["price"] as? Int
         // completed = snapshotValue["completed"] as! Bool
         ref = snapshot.ref
     }
