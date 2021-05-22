@@ -5,7 +5,7 @@ class MainViewController: UIViewController {
 
     var videoCapture = AVCaptureVideoPreviewLayer()
     let avSession = AVCaptureSession()
-    var ref: DatabaseReference!
+    var ref = Database.database().reference()
     var products = Array<Product>()
 
     private let qrScannerButton: UIButton = {
