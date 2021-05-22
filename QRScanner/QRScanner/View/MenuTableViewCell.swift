@@ -4,7 +4,8 @@ class MenuTableViewCell: UITableViewCell {
     static let menuCellID = "menuCellID"
     
     private let bgView = UIView()
-    
+
+
     private let icon: UIImageView = {
         let icon = UIImageView()
         icon.contentMode = .scaleToFill
@@ -52,15 +53,16 @@ class MenuTableViewCell: UITableViewCell {
     
     var product: Product? {
         didSet {
-            if let image = product?.icon {
-                icon.image = UIImage(named: image)
-            }
+//            if let image = product?.icon {
+//                icon.image = UIImage(named: image)
+//            }
+//            if let descName = product?.description {
+//                descriptionLabel.text = descName
+//            }
             if let prodName = product?.name {
                 productName.text = prodName
             }
-            if let descName = product?.description {
-                descriptionLabel.text = descName
-            }
+
             if let priceLbl = product?.price {
                 priceLabel.text = String(priceLbl) + " \u{20B8}"
             }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94960C6B2658CAF2006E17BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94960C6A2658CAF2006E17BD /* GoogleService-Info.plist */; };
+		94960C6F2658F336006E17BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94960C6E2658F336006E17BD /* GoogleService-Info.plist */; };
 		98C415BAD8D9992D8537C1BB /* Pods_QRScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749C2FFC48436EE471A08428 /* Pods_QRScanner.framework */; };
 		B68F061D2655235D003F5851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68F061C2655235D003F5851 /* AppDelegate.swift */; };
 		B68F061F2655235D003F5851 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68F061E2655235D003F5851 /* SceneDelegate.swift */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		2244DD8E846C553F9DA35CA5 /* Pods-QRScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRScanner.debug.xcconfig"; path = "Target Support Files/Pods-QRScanner/Pods-QRScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		749C2FFC48436EE471A08428 /* Pods_QRScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		94960C6A2658CAF2006E17BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94960C6E2658F336006E17BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B68F06192655235D003F5851 /* QRScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68F061C2655235D003F5851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B68F061E2655235D003F5851 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		B68F061B2655235D003F5851 /* QRScanner */ = {
 			isa = PBXGroup;
 			children = (
-				94960C6A2658CAF2006E17BD /* GoogleService-Info.plist */,
+				94960C6E2658F336006E17BD /* GoogleService-Info.plist */,
 				B68F061C2655235D003F5851 /* AppDelegate.swift */,
 				B68F061E2655235D003F5851 /* SceneDelegate.swift */,
 				B68F064D26566FD2003F5851 /* Data */,
@@ -198,7 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B68F06292655235E003F5851 /* LaunchScreen.storyboard in Resources */,
-				94960C6B2658CAF2006E17BD /* GoogleService-Info.plist in Resources */,
+				94960C6F2658F336006E17BD /* GoogleService-Info.plist in Resources */,
 				B68F06262655235E003F5851 /* Assets.xcassets in Resources */,
 				B68F06242655235D003F5851 /* Main.storyboard in Resources */,
 			);

@@ -5,7 +5,6 @@ class MainViewController: UIViewController {
 
     var videoCapture = AVCaptureVideoPreviewLayer()
     let avSession = AVCaptureSession()
-    var ref = Database.database().reference()
     var products = Array<Product>()
 
     private let qrScannerButton: UIButton = {
@@ -28,39 +27,7 @@ class MainViewController: UIViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //refHandle = postRef.observe(DataEventType.value, with: { (snapshot) in
-         // let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-          // ...
-        //})
-
-        self.ref.observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
-            var _products = Array<Product>()
-            for item in snapshot.children {
-                let product = Product(snapshot: item as! DataSnapshot)
-                _products.append(product)
-            }
-
-            self?.products = _products
-           //self?.MenuViewController.reloadData()
-        })
-
-//        var collnum = ""
-//        ref = Database.database().reference()
-//        let collid = ref.child("collid").child("day")
-//
-
-//        collid.observeSingleEvent(of : .value, with : {(Snapshot) in
-//
-//                print(Snapshot)
-//
-//                if let snapDate = Snapshot.value as? String{
-//                        collnum = snapDate
-//                        print(snapDate)
-//                }
-//        })
-    }
+    
     @objc private func scanQR() {
         let menuVC = MenuViewController()
         navigationController?.pushViewController(menuVC, animated: true)
