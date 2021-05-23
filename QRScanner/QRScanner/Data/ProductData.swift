@@ -2,9 +2,10 @@ import Foundation
 
 struct Products {
     static var hamburgersList: [Product] {
-        let product1 = Product(name: "burger", price: 1200)
+        //let product1 = Product(name: "burger", price: 1200)
+
+        let product1 = Product(name: "", price: 0, icon: "", description: "")
         return [product1]
-//        let hamburger1 = Product(name: "Блю Чиз Бургер", icon: "b1", description: "Котлета из мраморной  говядины, огурцы, помидоры, соус", price: 1350)
 //        let hamburger2 = Product(name: "Гамбургер", icon: "b2", description: "Kотлета из мраморной говядины, огурцы, помидоры, острый соус", price: 1250)
 //        let hamburger3 = Product(name: "Чизбургер", icon: "b3", description: "Kотлета из мраморной говядины, сыр, огурцы, помидоры", price: 1500)
 //        let hamburger4 = Product(name: "Бургер куриный", icon: "b4", description: "Kотлета из курицы, огурцы, помидоры, соус", price: 1200)

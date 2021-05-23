@@ -8,6 +8,7 @@ class MenuTableViewCell: UITableViewCell {
 
     var icon: UIImageView = {
         let icon = UIImageView()
+        
         icon.contentMode = .scaleToFill
         icon.translatesAutoresizingMaskIntoConstraints = false
         return icon
@@ -53,12 +54,15 @@ class MenuTableViewCell: UITableViewCell {
     
     var product: Product? {
         didSet {
-//            if let image = product?.icon {
-//                icon.image = UIImage(named: image)
-//            }
-//            if let descName = product?.description {
-//                descriptionLabel.text = descName
-//            }
+            if let image = product?.icon {
+                downloadImage(from: URL(string: image))
+                //let fileUrl = URL(string: filePath)
+
+                //UIImage(named: image)
+            }
+            if let descName = product?.description {
+                descriptionLabel.text = descName
+            }
             if let prodName = product?.name {
                 productName.text = prodName
             }
@@ -108,7 +112,23 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     
-    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+
+    func downloadImage(from url: URL?) {
+        print("Download Started")
+        guard let url = url else { return }
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+                self?.icon.image = UIImage(data: data)
+            }
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
